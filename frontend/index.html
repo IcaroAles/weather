@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-container">
+        <h2>Weather Dashboard</h2>
+        <p id="city">Loading...</p>
+        <p id="temperature"></p>
+        <p id="humidity"></p>
+        <p id="description"></p>
+    </div>
+
+    <script>
+        async function fetchWeather() {
+            try {
+                const response = await fetch("http://localhost:8080/weather");
+                const data = await response.json();
+
+                document.getElementById("city").textContent = "City: " + data.name;
+                document.getElementById("temperature").textContent = "Temperature: " + data.main.temp + "°C";
+                document.getElementById("humidity").textContent = "Humidity: " + data.main.humidity + "%";
+                document.getElementById("description").textContent = "Condition: " + data.weather[0].description;
+            } catch (error) {
+                console.error("Error fetching weather:", error);
+            }
+        }
+
+        fetchWeather();
+    </script>
+</body>
+</html>

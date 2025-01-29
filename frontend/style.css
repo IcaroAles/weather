@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #87CEEB;
+    text-align: center;
+}
+
+.weather-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
